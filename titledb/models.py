@@ -27,7 +27,7 @@ from sqlalchemy.orm import (
 
 from sqlalchemy.sql import ( select, func, cast )
 
-from zope.sqlalchemy import ZopeTransactionEvents
+from zope.sqlalchemy import ZopeTransactionExtension
 
 from .jsonhelper import RenderSchema
 
