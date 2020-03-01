@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
 	--no-install-recommends && apt-get autoremove -y && rm -rf /var/lib/apt/lists/* && pip install dumb-init
 
 COPY --chown=titledb:titledb setup.py version.py /usr/src/titledb/
-RUN pip install zope.sqlalchemy=1.1
+
 RUN pip install -e .
 COPY --chown=titledb:titledb . /usr/src/titledb
 COPY --chown=titledb:titledb extras/cron/titledb /var/spool/cron/crontabs/
