@@ -1,6 +1,6 @@
 FROM python:3.6
 
-EXPOSE 6543
+EXPOSE 8080
 
 RUN groupadd --gid 5000 titledb && useradd --no-log-init --no-create-home --home-dir /usr/src/titledb --uid 5000 --gid 5000 --shell /bin/false titledb
 RUN mkdir -p /usr/src/titledb && chown titledb:titledb /usr/src/titledb
