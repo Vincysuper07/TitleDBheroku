@@ -73,7 +73,7 @@ class FileSchema(GenericSchema):
 
 class FileSchemaNested(FileSchema):
     url_id = fields.Integer(load_only=True)
-    url = fields.Nested('URLSchemaNested', many=False, only='url')
+    url = fields.Nested('URLSchemaNested', many=False, only=('url',))
 
 class URL(GenericBase):
     __tablename__ = 'url'
@@ -142,7 +142,7 @@ class EntrySchema(GenericSchema):
 
 class EntrySchemaNested(EntrySchema):
     category_id = fields.Integer(load_only=True)
-    category = fields.Nested('CategorySchema', many=False, only='name')
+    category = fields.Nested('CategorySchema', many=False, only=('name',))
     cia = fields.Nested('CIASchemaNested', many=True, exclude=['active','entry_id','entry'])
     tdsx = fields.Nested('TDSXSchemaNested', many=True, exclude=['active','entry_id','entry'])
     arm9 = fields.Nested('ARM9SchemaNested', many=True, exclude=['active','entry_id','entry'])
@@ -201,7 +201,7 @@ class CIASchema_v0(RenderSchema):
     author = fields.String(dump_only=True)
     size = fields.Integer(dump_only=True)
     mtime = fields.Function(lambda obj: int(obj.mtime.strftime('%s')) if obj.mtime else 0, dump_only=True)
-    url = fields.Nested('URLSchemaNested', many=False, only='url')
+    url = fields.Nested('URLSchemaNested', many=False, only=('url',))
     create_time = fields.DateTime(format='%Y-%m-%d %H:%M:%S', dump_only=True)
     update_time = fields.DateTime(format='%Y-%m-%d %H:%M:%S', dump_only=True)
     class Meta:
